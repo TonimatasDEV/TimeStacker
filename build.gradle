@@ -6,7 +6,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "potiontimestacker-${mod_version}"
+version = "potiontimestacker-${mod_version}-${minecraft_version}"
 group = 'net.tonimatasdev.potiontimestacker'
 archivesBaseName = 'potiontimestacker'
 
