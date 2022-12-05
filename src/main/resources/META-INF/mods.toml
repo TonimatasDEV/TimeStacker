@@ -1,0 +1,33 @@
+
+modLoader = "javafml"
+loaderVersion = "[43,)"
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "potiontimestacker"
+version = "1.0.0.0"
+displayName = "PotionTimeStacker"
+#updateJSONURL="http://myurl.me/"
+#displayURL="http://example.com/"
+#logoFile="UltimateFPS.png"
+#credits="Thanks for this example mod goes to Java"
+authors = "TonimatasDEV"
+#displayTest="MATCH_VERSION"
+
+description = '''
+Stack potion time.
+'''
+
+[[dependencies.potiontimestacker]]
+modId = "forge"
+mandatory = true
+versionRange = "[43,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.potiontimestacker]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19.2,1.20)"
+ordering = "NONE"
+side = "BOTH"
