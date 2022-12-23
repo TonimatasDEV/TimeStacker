@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[40,)"
+loaderVersion = "[44,)"
 license = "All Rights Reserved"
 
 [[mods]]
@@ -20,13 +20,13 @@ Stack potion time.
 [[dependencies.potiontimestacker]]
 modId = "forge"
 mandatory = true
-versionRange = "[40,)"
+versionRange = "[44,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.potiontimestacker]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2]"
+versionRange = "[1.19.3]"
 ordering = "NONE"
 side = "BOTH"
