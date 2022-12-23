@@ -5,7 +5,7 @@ license = "All Rights Reserved"
 
 [[mods]]
 modId = "potiontimestacker"
-version = "1.0.0.0"
+version = "1.0.1"
 displayName = "PotionTimeStacker"
 #updateJSONURL="http://myurl.me/"
 #displayURL="http://example.com/"
