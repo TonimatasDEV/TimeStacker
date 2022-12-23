@@ -8,15 +8,14 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
-import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(net.minecraft.world.item.PotionItem.class)
-public class PotionItem {
+@Mixin(PotionItem.class)
+public class PotionItemMixin {
 
     /**
      * @author TonimatasDEV
@@ -24,25 +23,25 @@ public class PotionItem {
      */
 
     @Overwrite
-    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack itemStack, @NotNull Level level, @NotNull LivingEntity livingEntity) {
+    public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
         Player player = livingEntity instanceof Player ? (Player) livingEntity : null;
-        if (player instanceof ServerPlayer) {
-            CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer) player, itemStack);
+        if (player instanceof ServerPlayer serverPlayer) {
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, itemStack);
         }
 
         if (!level.isClientSide) {
-            for (MobEffectInstance mobeffectinstance : PotionUtils.getMobEffects(itemStack)) {
-                if (mobeffectinstance.getEffect().isInstantenous()) {
-                    mobeffectinstance.getEffect().applyInstantenousEffect(player, player, livingEntity, mobeffectinstance.getAmplifier(), 1.0D);
+            for (MobEffectInstance mobEffectInstance : PotionUtils.getMobEffects(itemStack)) {
+                if (mobEffectInstance.getEffect().isInstantenous()) {
+                    mobEffectInstance.getEffect().applyInstantenousEffect(player, player, livingEntity, mobEffectInstance.getAmplifier(), 1.0D);
                 } else {
-                    if (livingEntity.hasEffect(mobeffectinstance.getEffect())) {
-                        MobEffectInstance mobEffectInstance = livingEntity.getEffect(mobeffectinstance.getEffect());
-                        assert mobEffectInstance != null;
+                    if (livingEntity.hasEffect(mobEffectInstance.getEffect())) {
+                        MobEffectInstance mobEffectInstance1 = livingEntity.getEffect(mobEffectInstance.getEffect());
+                        assert mobEffectInstance1 != null;
 
-                        int duration = mobEffectInstance.getDuration() + mobeffectinstance.getDuration();
-                        livingEntity.addEffect(new MobEffectInstance(mobeffectinstance.getEffect(), duration, mobeffectinstance.getAmplifier(), mobeffectinstance.isAmbient(), mobeffectinstance.isVisible(), mobeffectinstance.showIcon(), null, mobeffectinstance.getFactorData()));
+                        int duration = mobEffectInstance.getDuration() + mobEffectInstance1.getDuration();
+                        livingEntity.addEffect(new MobEffectInstance(mobEffectInstance1.getEffect(), duration, mobEffectInstance1.getAmplifier(), mobEffectInstance1.isAmbient(), mobEffectInstance1.isVisible(), mobEffectInstance1.showIcon()));
                     } else {
-                        livingEntity.addEffect(new MobEffectInstance(mobeffectinstance));
+                        livingEntity.addEffect(new MobEffectInstance(mobEffectInstance));
                     }
                 }
             }
@@ -65,7 +64,6 @@ public class PotionItem {
             }
         }
 
-        livingEntity.gameEvent(GameEvent.DRINK);
         return itemStack;
     }
 }
