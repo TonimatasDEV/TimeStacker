@@ -35,10 +35,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'cerium'
+            property 'forge.enabledGameTestNamespaces', 'potiontimestacker'
 
             mods {
-                cerium {
+                potiontimestacker {
                     source sourceSets.main
                 }
             }
@@ -48,10 +48,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'cerium'
+            property 'forge.enabledGameTestNamespaces', 'potiontimestacker'
 
             mods {
-                cerium {
+                potiontimestacker {
                     source sourceSets.main
                 }
             }
@@ -61,10 +61,10 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'cerium', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'potiontimestacker', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                cerium {
+                potiontimestacker {
                     source sourceSets.main
                 }
             }
