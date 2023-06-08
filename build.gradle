@@ -8,7 +8,6 @@ archivesBaseName = 'potiontimestacker'
 mixin {
     config "potiontimestacker.mixins.json"
     add sourceSets.main, "potiontimestacker.refmap.json"
-    disableEclipseAddon = true
     debug.export = true
 }
 
