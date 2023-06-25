@@ -1,10 +1,10 @@
 modLoader = "javafml"
-loaderVersion = "[45,)"
+loaderVersion = "${loader_version_range}"
 license = "Apache License Version 2.0"
 
 [[mods]]
 modId = "potiontimestacker"
-version = "1.0.1"
+version = "${mod_version}"
 displayName = "PotionTimeStacker"
 #updateJSONURL="http://myurl.me/"
 #displayURL="http://example.com/"
@@ -20,13 +20,13 @@ Stack potion time.
 [[dependencies.potiontimestacker]]
 modId = "forge"
 mandatory = true
-versionRange = "[45,)"
+versionRange = "${forge_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.potiontimestacker]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20,1.21)"
+versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
