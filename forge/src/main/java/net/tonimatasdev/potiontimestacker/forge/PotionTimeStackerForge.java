@@ -2,12 +2,12 @@ package net.tonimatasdev.potiontimestacker.forge;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.tonimatasdev.potiontimestacker.PotionTimeStacker;
 
 @Mod(PotionTimeStacker.MOD_ID)
-public class PotionTimeStacker {
-    public static final String MOD_ID = "net/tonimatasdev/potiontimestacker";
+public class PotionTimeStackerForge {
 
-    public PotionTimeStacker() {
+    public PotionTimeStackerForge() {
         MinecraftForge.EVENT_BUS.register(this);
     }
 }
