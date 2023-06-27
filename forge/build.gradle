@@ -12,7 +12,7 @@ configurations {
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    forge "net.minecraftforge:forge:${forge_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
@@ -21,8 +21,7 @@ dependencies {
 def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
 def replaceProperties = [
         minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-        forge_version: forge_version, forge_version_range: forge_version_range,
-        loader_version_range: forge_version_range, mod_version: mod_version
+        forge_version_range: forge_version_range, loader_version_range: forge_version_range, mod_version: mod_version
 ]
 
 processResources {
