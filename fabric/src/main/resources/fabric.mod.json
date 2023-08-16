@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "id": "potiontimestacker",
+  "id": "timestacker",
   "version": "${modVersion}",
 
-  "name": "PotionTimeStacker",
+  "name": "TimeStacker",
   "description": "",
   "authors": ["TonimatasDEV"],
   "contact": {
-    "issues": "https://github.com/TonimatasDEV/PotionTimeStacker/issues"
+    "issues": "https://github.com/TonimatasDEV/TimeStacker/issues"
   },
 
   "license": "MIT",
@@ -15,10 +15,12 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": ["net.tonimatasdev.potiontimestacker.PotionTimeStacker"]
+    "main": [
+      "net.tonimatasdev.timestacker.TimeStacker"
+    ]
   },
   "mixins": [
-    "potiontimestacker.mixins.json"
+    "timestacker.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.0",

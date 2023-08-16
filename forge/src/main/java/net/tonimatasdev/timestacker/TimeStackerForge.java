@@ -1,12 +1,12 @@
-package net.tonimatasdev.potiontimestacker;
+package net.tonimatasdev.timestacker;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod("potiontimestacker")
-public class PotionTimeStackerForge {
+@Mod("timestacker")
+public class TimeStackerForge {
 
-    public PotionTimeStackerForge() {
+    public TimeStackerForge() {
         MinecraftForge.EVENT_BUS.register(this);
     }
 }

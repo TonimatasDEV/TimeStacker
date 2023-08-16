@@ -1,4 +1,4 @@
-package net.tonimatasdev.potiontimestacker.mixin;
+package net.tonimatasdev.timestacker.mixin;
 
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;

@@ -1,4 +1,4 @@
-package net.tonimatasdev.potiontimestacker.mixin;
+package net.tonimatasdev.timestacker.mixin;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,7 +22,6 @@ public class PotionItemMixin {
      * @author TonimatasDEV
      * @reason Stack the time of the same potions.
      */
-
     @Overwrite
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
         Player player = livingEntity instanceof Player ? (Player) livingEntity : null;

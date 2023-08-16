@@ -9,4 +9,4 @@ pluginManagement {
 }
 
 include("fabric", "forge")
-rootProject.name = "PotionTimeStacker"
+rootProject.name = "TimeStacker"
