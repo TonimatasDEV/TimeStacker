@@ -1,10 +1,9 @@
-package net.tonimatasdev.potiontimestacker.forge;
+package net.tonimatasdev.potiontimestacker;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.tonimatasdev.potiontimestacker.PotionTimeStacker;
 
-@Mod(PotionTimeStacker.MOD_ID)
+@Mod("potiontimestacker")
 public class PotionTimeStackerForge {
 
     public PotionTimeStackerForge() {
