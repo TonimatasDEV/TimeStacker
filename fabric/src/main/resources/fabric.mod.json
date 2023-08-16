@@ -1,23 +1,27 @@
 {
   "schemaVersion": 1,
   "id": "potiontimestacker",
-  "version": "${version}",
+  "version": "${modVersion}",
 
   "name": "PotionTimeStacker",
   "description": "",
-  "authors": [],
-  "contact": {},
+  "authors": ["TonimatasDEV"],
+  "contact": {
+    "issues": "https://github.com/TonimatasDEV/PotionTimeStacker/issues"
+  },
 
-  "license": "Apache 2.0",
+  "license": "MIT",
   "icon": "icon.png",
 
   "environment": "*",
-  "entrypoints": {},
+  "entrypoints": {
+    "main": ["net.tonimatasdev.potiontimestacker.PotionTimeStacker"]
+  },
   "mixins": [
-    "potiontimestacker-common.mixins.json"
+    "potiontimestacker.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.0",
-    "minecraft": ">=${minecraft_version}"
+    "minecraft": ">=${minecraftVersion}"
   }
 }
