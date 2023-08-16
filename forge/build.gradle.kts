@@ -11,7 +11,7 @@ val forgeVersion: String by extra
 val forgeVersionRange: String by extra
 
 base {
-    archivesName.set("PotionTimeStackerForge")
+    archivesName.set("TimeStackerForge")
 }
 
 java {
@@ -32,31 +32,31 @@ minecraft {
             property("forge.logging.console.level", "debug")
 
             mods {
-                create("potiontimestacker") {
+                create("timestacker") {
                     source(sourceSets.main.get())
                 }
             }
         }
 
         create("client") {
-            property("forge.enabledGameTestNamespaces", "potiontimestacker")
+            property("forge.enabledGameTestNamespaces", "timestacker")
         }
 
         create("server") {
-            property("forge.enabledGameTestNamespaces", "potiontimestacker")
+            property("forge.enabledGameTestNamespaces", "timestacker")
             args("--nogui")
         }
 
         create("data") {
             workingDirectory(project.file("run-data"))
-            args("--mod", "potiontimestacker", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/"))
+            args("--mod", "timestacker", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/"))
         }
     }
 }
 
 mixin {
-    add(sourceSets.main.get(), "potiontimestacker.refmap.json")
-    config("potiontimestacker.mixins.json")
+    add(sourceSets.main.get(), "timestacker.refmap.json")
+    config("timestacker.mixins.json")
 }
 
 sourceSets.main.get().resources { srcDir("src/generated/resources") }
@@ -88,10 +88,10 @@ tasks.withType<ProcessResources> {
 tasks.withType<Jar> {
     manifest {
         attributes(
-                "Specification-Title" to "PotionTimeStacker",
+                "Specification-Title" to "timestacker",
                 "Specification-Vendor" to "TonimatasDEV",
                 "Specification-Version" to modVersion,
-                "Implementation-Title" to "PotionTimeStacker",
+                "Implementation-Title" to "timestacker",
                 "Implementation-Version" to modVersion,
                 "Implementation-Vendor" to "TonimatasDEV",
         )

@@ -9,7 +9,7 @@ val fabricApiVersion: String by extra
 val yarnMappings: String by extra
 
 base {
-    archivesName.set("PotionTimeStackerFabric")
+    archivesName.set("TimeStackerFabric")
 }
 
 repositories {
