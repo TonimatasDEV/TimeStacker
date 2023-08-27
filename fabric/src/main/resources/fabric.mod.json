@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.tonimatasdev.timestacker.TimeStacker"
+      "net.tonimatasdev.timestacker.TimeStackerFabric"
     ]
   },
   "mixins": [
