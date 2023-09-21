@@ -1,5 +1,6 @@
 package net.tonimatasdev.timestacker;
 
+import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -8,6 +9,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 public class TimeStackerFabric implements ModInitializer {
     @Override
     public void onInitialize() {
+        LogUtils.getLogger().info("Time Stacker (Fabric) has been initialized successfully");
     }
 
     public static boolean applyEffect(LivingEntity livingEntity, StatusEffectInstance statusEffectInstance, Entity entity) {
