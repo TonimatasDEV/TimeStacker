@@ -7,13 +7,9 @@ issueTrackerURL="https://github.com/TonimatasDEV/TimeStacker/issues"
 modId="timestacker"
 version="${modVersion}"
 displayName="TimeStacker"
-#updateJSONURL="http://myurl.me/"
-#displayURL="http://example.com/"
 logoFile="icon.png"
-#credits="Thanks for this example mod goes to Java"
+updateJSONURL="https://api.modrinth.com/updates/timestacker/forge_updates.json"
 authors="TonimatasDEV"
-#displayTest="MATCH_VERSION"
-
 description='''
 Stack potion time.
 '''
