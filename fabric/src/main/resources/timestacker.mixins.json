@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "net.tonimatasdev.timestacker.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "timestacker.refmap.json",
+  "refmap": "TimeStackerFabric-refmap.json",
   "mixins": [
     "AreaEffectCloudEntityMixin",
     "PotionEntityMixin",
