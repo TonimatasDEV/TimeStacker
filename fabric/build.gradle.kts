@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     id("fabric-loom") version "1.3-SNAPSHOT"
 }
@@ -18,7 +20,7 @@ repositories {
 
 dependencies {
     minecraft("com.mojang:minecraft:$minecraftVersion")
-    mappings("net.fabricmc:yarn:$minecraftVersion" + "$yarnMappings:v2")
+    mappings("net.fabricmc:yarn:$minecraftVersion$yarnMappings:v2")
     modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
 
 }
