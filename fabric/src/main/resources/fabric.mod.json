@@ -16,11 +16,11 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.tonimatasdev.timestacker.TimeStackerFabric"
+      "dev.tonimatas.timestacker.fabric.TimeStackerFabric"
     ]
   },
   "mixins": [
-    "timestacker.mixins.json"
+    "timestacker-common.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.0",
