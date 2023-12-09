@@ -22,18 +22,20 @@ jobs:
       - name: Build
         run: ./gradlew build
 
-      - name: Upload artifacts
+      - name: Upload NeoForge artifacts
         uses: actions/upload-artifact@v3.1.2
         with:
           name: TimeStacker-NeoForge
           path: neoforge/build/libs/**.jar
 
-      - uses: actions/upload-artifact@v3.1.2
+      - name: Upload Forge artifacts
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: TimeStacker-Forge
           path: forge/build/libs/**.jar
 
-      - uses: actions/upload-artifact@v3.1.2
+      - name: Upload Fabric artifacts
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: TimeStacker-Fabric
           path: fabric/build/libs/**.jar
