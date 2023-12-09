@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.tonimatas.timestacker.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AreaEffectCloudMixin",
+    "PotionItemMixin",
+    "ThrownPotionMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

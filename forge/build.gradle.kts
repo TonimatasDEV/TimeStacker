@@ -1,8 +1,11 @@
+@file:Suppress("DEPRECATION")
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import net.fabricmc.loom.task.RemapJarTask
+import org.gradle.api.component.AdhocComponentWithVariants
+
 plugins {
-    id("net.minecraftforge.gradle") version "[6.0,6.2)"
-    id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
-    id("idea")
-    id("eclipse")
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 val modVersion: String by extra
@@ -10,74 +13,33 @@ val minecraftVersion: String by extra
 val forgeVersion: String by extra
 val forgeVersionRange: String by extra
 
-base {
-    archivesName.set("TimeStackerForge")
+architectury {
+    platformSetupLoomIde()
+    forge()
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
-    withSourcesJar()
-}
-
-
-minecraft {
-    mappings("official", minecraftVersion)
-
-    copyIdeResources.set(true)
-
-    runs {
-        configureEach {
-            workingDirectory(project.file("run"))
-            property("forge.logging.markers", "REGISTRIES")
-            property("forge.logging.console.level", "debug")
-
-            mods {
-                create("timestacker") {
-                    source(sourceSets.main.get())
-                }
-            }
-        }
-
-        create("client") {
-            property("forge.enabledGameTestNamespaces", "timestacker")
-        }
-
-        create("server") {
-            property("forge.enabledGameTestNamespaces", "timestacker")
-            args("--nogui")
-        }
-
-        create("data") {
-            workingDirectory(project.file("run-data"))
-            args("--mod", "timestacker", "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources/"))
-        }
+loom {
+    forge {
+        mixinConfig("timestacker-common.mixins.json")
     }
 }
 
-mixin {
-    add(sourceSets.main.get(), "timestacker.refmap.json")
-    config("timestacker.mixins.json")
-}
+val common by configurations.creating
+val shadowCommon by configurations.creating
 
-sourceSets.main.get().resources { srcDir("src/generated/resources") }
-
-repositories {
-
-}
+configurations["compileClasspath"].extendsFrom(common)
+configurations["runtimeClasspath"].extendsFrom(common)
+configurations["developmentForge"].extendsFrom(common)
 
 dependencies {
-    minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
-    annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
+    forge("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
+
+    common(project(path = ":common", configuration = "namedElements")) { isTransitive = false }
+    shadowCommon(project(path = ":common", configuration = "transformProductionForge")) { isTransitive = false }
 }
 
-
-val replaceProperties = mapOf(
-    "minecraftVersion" to minecraftVersion,
-    "forgeVersionRange" to forgeVersionRange,
-    "modVersion" to modVersion
-)
-
 tasks.withType<ProcessResources> {
+    val replaceProperties = mapOf("minecraftVersion" to minecraftVersion, "forgeVersionRange" to forgeVersionRange, "modVersion" to modVersion)
     inputs.properties(replaceProperties)
 
     filesMatching("META-INF/mods.toml") {
@@ -85,21 +47,32 @@ tasks.withType<ProcessResources> {
     }
 }
 
-tasks.withType<Jar> {
-    manifest {
-        attributes(
-                "Specification-Title" to "timestacker",
-                "Specification-Vendor" to "TonimatasDEV",
-                "Specification-Version" to modVersion,
-                "Implementation-Title" to "timestacker",
-                "Implementation-Version" to modVersion,
-                "Implementation-Vendor" to "TonimatasDEV",
-        )
-    }
+tasks.withType<ShadowJar> {
+    exclude("fabric.mod.json")
 
-    finalizedBy("reobfJar")
+    configurations = listOf(shadowCommon)
+    archiveClassifier.set("dev-shadow")
 }
 
-tasks.withType<JavaCompile> {
-    options.encoding = "UTF-8"
+tasks.withType<RemapJarTask> {
+    val shadowTask = tasks.shadowJar.get()
+    input.set(shadowTask.archiveFile)
+    dependsOn(shadowTask)
+    archiveClassifier.set("")
+}
+
+tasks.jar {
+    archiveClassifier.set("dev")
+}
+
+tasks.sourcesJar {
+    val commonSources = project(":common").tasks.sourcesJar.get()
+    dependsOn(commonSources)
+    from(commonSources.archiveFile.map { zipTree(it) })
+}
+
+components.getByName<AdhocComponentWithVariants>("java").apply {
+    withVariantsFromConfiguration(project.configurations["shadowRuntimeElements"]) {
+        skip()
+    }
 }
