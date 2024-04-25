@@ -17,7 +17,7 @@ subprojects {
     apply(plugin = "dev.architectury.loom")
 
     base {
-        archivesName.set("TimeStacker-" + project.name)
+        archivesName.set("timestacker-" + project.name)
     }
 
     configure<LoomGradleExtensionAPI> {
