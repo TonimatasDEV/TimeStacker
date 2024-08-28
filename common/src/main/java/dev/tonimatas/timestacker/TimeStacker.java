@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class TimeStacker {
 	public static Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -61,7 +62,7 @@ public class TimeStacker {
 		config.setComment("The time is in minutes. Change timeUnit to s for seconds and h for hours. You can use /effect ... to see the modid/effectname and blacklist it.");
 		config.setTimeUnit("m");
 		config.setMaxTime(16);
-		config.setBlacklist(Arrays.asList("modid:effectname", "test:speed", "test2:levitation"));
+		config.setBlacklist(List.of("modid:effectname"));
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
