@@ -59,7 +59,7 @@ public class TimeStacker {
 	
 	public static void writeConfig(File file) {
 		config = new Config();
-		config.setComment("The time is in minutes. Change timeUnit to s for seconds and h for hours. You can use /effect ... to see the modid/effectname and blacklist it.");
+		config.setComment("The time is in minutes. Change timeUnit to s (seconds), m (minutes) and h (hours). You can use /effect ... to see the modid/effectname and blacklist it.");
 		config.setTimeUnit("m");
 		config.setMaxTime(16);
 		config.setBlacklist(List.of("modid:effectname"));
