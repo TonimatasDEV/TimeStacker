@@ -70,8 +70,6 @@ public class TimeStacker {
 		config.setMaxTime(16);
 		config.setBlacklist(List.of("modid:effectname"));
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
 		try (FileWriter writer = new FileWriter(file)) {
 			gson.toJson(config, writer);
 		} catch (IOException e) {
