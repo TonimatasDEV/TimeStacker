@@ -1,3 +1,4 @@
+[![Hits](https://hits.sh/github.com/tonimatasdev/timestacker.svg?view=today-total&label=Views)](https://hits.sh/github.com/tonimatasdev/timestacker/)
 # Time Stacker
 This mod adds the mechanic of adding time if you drink/splash the same potion.
 
