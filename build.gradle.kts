@@ -37,10 +37,6 @@ allprojects {
     version = "$modVersion-$minecraftVersion"
     group = "dev.tonimatas"
 
-    repositories {
-
-    }
-
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
     }
