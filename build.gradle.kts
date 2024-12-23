@@ -3,7 +3,8 @@ import net.fabricmc.loom.api.LoomGradleExtensionAPI
 plugins {
     java
     id("architectury-plugin") version "3.4-SNAPSHOT"
-    id("dev.architectury.loom") version "1.6-SNAPSHOT" apply false
+    id("dev.architectury.loom") version "1.7-SNAPSHOT" apply false
+    id("com.gradleup.shadow") version "8.3.5" apply false
 }
 
 val minecraftVersion: String by extra
@@ -15,6 +16,7 @@ architectury {
 
 subprojects {
     apply(plugin = "dev.architectury.loom")
+    apply(plugin = "com.gradleup.shadow")
 
     base {
         archivesName.set("timestacker-" + project.name)
@@ -39,9 +41,13 @@ allprojects {
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
+        options.release.set(21)
     }
 
     java {
         withSourcesJar()
+
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 }

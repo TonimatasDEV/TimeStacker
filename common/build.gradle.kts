@@ -1,14 +1,9 @@
 val fabricLoaderVersion: String by extra
 
+architectury {
+    common("fabric", "neoforge")
+}
+
 dependencies {
     modImplementation("net.fabricmc:fabric-loader:$fabricLoaderVersion")
-}
-
-loom {
-    @Suppress("UnstableApiUsage")
-    mixin.defaultRefmapName.set("timestacker-common.refmap.json")
-}
-
-architectury {
-    common("fabric", /*"forge",*/ "neoforge")
 }
